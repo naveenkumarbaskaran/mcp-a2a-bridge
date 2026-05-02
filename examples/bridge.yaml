@@ -1,0 +1,58 @@
+# mcp-a2a-bridge configuration
+# See: https://github.com/naveenkumarbaskaran/mcp-a2a-bridge
+
+# ─── MCP → A2A Direction ───────────────────────────────────────────
+# Connect to MCP server(s) and expose them as a single A2A agent.
+
+mcp_servers:
+  # Example: stdio-based MCP server (local process)
+  - name: my-tools
+    transport: stdio
+    command: python
+    args: ["-m", "my_mcp_server"]
+    env:
+      SOME_API_KEY: "sk-xxx"
+
+  # Example: HTTP-based MCP server
+  # - name: remote-tools
+  #   transport: streamable-http
+  #   url: http://localhost:3000/mcp
+  #   headers:
+  #     Authorization: "Bearer token"
+
+# A2A agent configuration (auto-generated from MCP tools)
+a2a_agent_name: "MCP Bridge Agent"
+a2a_agent_description: "An AI agent bridging to MCP tool servers."
+a2a_host: "0.0.0.0"
+a2a_port: 8000
+
+# ─── A2A → MCP Direction ───────────────────────────────────────────
+# Connect to A2A agent(s) and expose their skills as MCP tools.
+
+a2a_agents:
+  - name: order-analyst
+    url: https://my-a2a-agent.example.com
+    description: "Maintenance Order Analyst"
+    # headers:
+    #   Authorization: "Bearer token"
+
+# MCP server configuration (auto-generated from A2A skills)
+mcp_server_name: "A2A Bridge Server"
+mcp_transport: streamable-http  # stdio | sse | streamable-http
+mcp_host: "127.0.0.1"
+mcp_port: 9000
+
+# ─── LLM Configuration ─────────────────────────────────────────────
+# Used for MCP → A2A direction (routing natural language to tools).
+
+llm:
+  model: gpt-4o-mini       # Any litellm-supported model
+  # api_key: sk-xxx         # Or set OPENAI_API_KEY env var
+  # api_base: https://...   # For custom endpoints
+  temperature: 0.0
+  max_tokens: 2048
+  timeout: 25
+
+# ─── General ────────────────────────────────────────────────────────
+
+log_level: INFO  # DEBUG | INFO | WARNING | ERROR
