@@ -7,7 +7,6 @@ import logging
 from typing import Any
 
 import litellm
-
 from mcp.types import Tool as MCPTool
 
 from mcp_a2a_bridge.common.config import LLMConfig
@@ -101,7 +100,8 @@ async def route_to_tools(
             else:
                 logger.warning("Dropping invalid tool call: %s", tc)
 
-        logger.info("Routed query to %d tool(s): %s", len(validated), [t["tool"] for t in validated])
+        tool_names = [t['tool'] for t in validated]
+        logger.info('Routed query to %d tool(s): %s', len(validated), tool_names)
         return validated
 
     except json.JSONDecodeError as e:

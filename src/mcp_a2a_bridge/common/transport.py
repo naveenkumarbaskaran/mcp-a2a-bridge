@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 import logging
+from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
-from typing import Any, AsyncGenerator
 
 from mcp import ClientSession
-from mcp.client.stdio import StdioServerParameters, stdio_client
 from mcp.client.sse import sse_client
+from mcp.client.stdio import StdioServerParameters, stdio_client
 from mcp.client.streamable_http import streamable_http_client
 
 from mcp_a2a_bridge.common.config import MCPServerConfig

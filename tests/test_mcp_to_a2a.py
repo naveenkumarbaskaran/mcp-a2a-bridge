@@ -1,6 +1,5 @@
 """Tests for MCP → A2A bridge components."""
 
-import pytest
 
 from mcp_a2a_bridge.mcp_to_a2a.agent_card import (
     build_tool_descriptions,
@@ -11,10 +10,10 @@ from mcp_a2a_bridge.mcp_to_a2a.agent_card import (
 class FakeTool:
     """Minimal MCP Tool-like object for testing."""
 
-    def __init__(self, name: str, description: str | None, inputSchema: dict | None = None):
+    def __init__(self, name: str, description: str | None, input_schema: dict | None = None):
         self.name = name
         self.description = description
-        self.inputSchema = inputSchema
+        self.inputSchema = input_schema
         self.outputSchema = None
         self.annotations = None
 

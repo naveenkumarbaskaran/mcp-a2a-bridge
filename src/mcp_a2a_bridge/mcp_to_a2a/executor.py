@@ -2,12 +2,7 @@
 
 from __future__ import annotations
 
-import json
 import logging
-from typing import Any
-
-from mcp import ClientSession
-from mcp.types import Tool as MCPTool
 
 from a2a.server.agent_execution import AgentExecutor
 from a2a.server.agent_execution.context import RequestContext
@@ -19,6 +14,8 @@ from a2a.types import (
     TaskState,
     TaskStatus,
 )
+from mcp import ClientSession
+from mcp.types import Tool as MCPTool
 
 from mcp_a2a_bridge.common.config import LLMConfig
 from mcp_a2a_bridge.mcp_to_a2a.tool_router import route_to_tools

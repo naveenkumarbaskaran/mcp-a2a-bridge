@@ -1,13 +1,10 @@
 """Tests for configuration loading."""
 
-import tempfile
-from pathlib import Path
 
 import pytest
 import yaml
 
 from mcp_a2a_bridge.common.config import (
-    A2AAgentConfig,
     BridgeConfig,
     LLMConfig,
     MCPServerConfig,

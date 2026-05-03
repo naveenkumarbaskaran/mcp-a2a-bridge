@@ -2,17 +2,11 @@
 
 from __future__ import annotations
 
-import asyncio
 import logging
 from contextlib import AsyncExitStack
 from typing import Any
 
 import uvicorn
-from fastapi import FastAPI
-
-from mcp import ClientSession
-from mcp.types import Tool as MCPTool
-
 from a2a.server.request_handlers import DefaultRequestHandler
 from a2a.server.routes import (
     create_agent_card_routes,
@@ -27,8 +21,11 @@ from a2a.types import (
     AgentProvider,
     AgentSkill,
 )
+from fastapi import FastAPI
+from mcp import ClientSession
+from mcp.types import Tool as MCPTool
 
-from mcp_a2a_bridge.common.config import BridgeConfig, MCPServerConfig
+from mcp_a2a_bridge.common.config import BridgeConfig
 from mcp_a2a_bridge.common.transport import connect_mcp
 from mcp_a2a_bridge.mcp_to_a2a.agent_card import mcp_tools_to_skills
 from mcp_a2a_bridge.mcp_to_a2a.executor import MCPBridgeExecutor

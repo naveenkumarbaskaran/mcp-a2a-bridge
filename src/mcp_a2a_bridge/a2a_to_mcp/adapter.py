@@ -2,18 +2,15 @@
 
 from __future__ import annotations
 
-import asyncio
 import json
 import logging
 from typing import Any
 
 import httpx
-
 from mcp.server.fastmcp import FastMCP
-from mcp.types import TextContent
 
-from mcp_a2a_bridge.common.config import A2AAgentConfig, BridgeConfig
 from mcp_a2a_bridge.a2a_to_mcp.tool_factory import agent_card_to_mcp_tools
+from mcp_a2a_bridge.common.config import A2AAgentConfig, BridgeConfig
 
 logger = logging.getLogger(__name__)
 

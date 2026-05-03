@@ -1,6 +1,5 @@
 """Tests for A2A → MCP bridge components."""
 
-import pytest
 
 from mcp_a2a_bridge.a2a_to_mcp.tool_factory import (
     _sanitize_name,
