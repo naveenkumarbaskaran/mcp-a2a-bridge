@@ -197,6 +197,15 @@ llm:
 
 Set `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, etc. as environment variables, or pass `api_key` in config.
 
+## Contributing
+
+```bash
+git clone https://github.com/naveenkumarbaskaran/mcp-a2a-bridge.git
+cd mcp-a2a-bridge
+pip install -e ".[dev]"
+pytest
+```
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
