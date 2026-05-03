@@ -2,13 +2,19 @@
 
 # mcp-a2a-bridge
 
-**Bidirectional bridge between MCP and A2A protocols**
+**The answer to "MCP vs A2A?" is *both.***
 
-Connect any [MCP](https://modelcontextprotocol.io/) tool server to the [A2A](https://github.com/a2aproject/a2a-python) agent ecosystem — and vice versa.
+Connect any [MCP](https://modelcontextprotocol.io/) tool server to the [A2A](https://github.com/a2aproject/a2a-python) agent ecosystem — and vice versa — with one command.
 
 [![PyPI version](https://img.shields.io/pypi/v/mcp-a2a-bridge?color=blue)](https://pypi.org/project/mcp-a2a-bridge/)
+[![CI](https://github.com/naveenkumarbaskaran/mcp-a2a-bridge/actions/workflows/ci.yml/badge.svg)](https://github.com/naveenkumarbaskaran/mcp-a2a-bridge/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/pypi/pyversions/mcp-a2a-bridge)](https://pypi.org/project/mcp-a2a-bridge/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Downloads](https://img.shields.io/pypi/dm/mcp-a2a-bridge)](https://pypi.org/project/mcp-a2a-bridge/)
+
+```
+pip install mcp-a2a-bridge
+```
 
 </div>
 
@@ -38,30 +44,39 @@ Connect any [MCP](https://modelcontextprotocol.io/) tool server to the [A2A](htt
 └─────────────────┘                        └─────────────────┘
 ```
 
+## Why This Bridge?
+
+| Feature | mcp-a2a-bridge | [GongRzhe](https://github.com/GongRzhe/A2A-MCP-Server) (148★) | [regismesquita](https://github.com/regismesquita/MCP_A2A) (21★) |
+|---------|:--------------:|:------------------:|:------------------:|
+| Direction | **Bidirectional** | A2A→MCP only | MCP→A2A only |
+| SDK versions | **a2a v1.0+, mcp v1.27+** | Pre-1.0 (archived) | Old SDKs |
+| pip install | **✅** | ❌ | ❌ |
+| CLI | **✅** (`quick` / `expose` / `serve`) | ❌ | ❌ |
+| Config file | **✅** YAML | ❌ | ❌ |
+| Multi-server | **✅** | ❌ | ❌ |
+| Python API | **✅** | ❌ | ❌ |
+| Tests | **23 tests, CI** | — | — |
+| Maintained | **Active (May 2026)** | **Archived** | Stale |
+
 ## Quick Start
-
-### Install
-
-```bash
-pip install mcp-a2a-bridge
-```
 
 ### MCP → A2A (one command)
 
 Turn any MCP server into an A2A agent:
 
 ```bash
+pip install mcp-a2a-bridge
+
 # Expose a local MCP server as an A2A agent on port 8000
 mcp-a2a-bridge quick python -m my_mcp_server --port 8000
 
-# Check it works
+# Verify
 curl http://localhost:8000/.well-known/agent-card.json
-curl http://localhost:8000/health
 ```
 
 ### A2A → MCP (one command)
 
-Turn any A2A agent into MCP tools:
+Turn any A2A agent into MCP tools for Claude Desktop:
 
 ```bash
 # Expose an A2A agent as MCP tools
@@ -77,6 +92,25 @@ Then add to your Claude Desktop config:
     }
   }
 }
+```
+
+### Try It Now (2-minute demo)
+
+```bash
+git clone https://github.com/naveenkumarbaskaran/mcp-a2a-bridge.git
+cd mcp-a2a-bridge
+pip install -e ".[dev]"
+
+# Start the demo (creates MCP server → bridges to A2A → test it)
+python examples/mcp_to_a2a_basic.py
+
+# In another terminal — check the auto-generated agent card:
+curl http://localhost:8000/.well-known/agent-card.json | python -m json.tool
+
+# Send a message to the bridged agent:
+curl -X POST http://localhost:8000/ \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"message/send","id":"1","params":{"message":{"role":"user","parts":[{"kind":"text","text":"What is 42 * 17?"}]}}}'
 ```
 
 ### Config File (advanced)
