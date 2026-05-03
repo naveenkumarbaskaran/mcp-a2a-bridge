@@ -30,7 +30,7 @@ class TestMCPToolsToSkills:
             FakeTool(
                 name="get_weather",
                 description="Get weather for a city",
-                inputSchema={
+                input_schema={
                     "type": "object",
                     "properties": {
                         "city": {"type": "string", "description": "City name"},
@@ -79,7 +79,7 @@ class TestBuildToolDescriptions:
             FakeTool(
                 name="search",
                 description="Search for items",
-                inputSchema={
+                input_schema={
                     "type": "object",
                     "properties": {
                         "query": {"type": "string", "description": "Search query"},
