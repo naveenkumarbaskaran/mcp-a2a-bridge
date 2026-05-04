@@ -20,6 +20,18 @@ pip install mcp-a2a-bridge
 
 ---
 
+## 🎬 Demo
+
+<p align="center">
+  <img src="assets/demo.gif" alt="mcp-a2a-bridge demo — bridge MCP tools to A2A agents in one command" width="700">
+  <br>
+  <em>One command: MCP server → A2A agent, bidirectional, with auto-generated AgentCard</em>
+</p>
+
+> **Try it yourself:** `pip install mcp-a2a-bridge && mcp-a2a-bridge quick python -m my_mcp_server`
+
+---
+
 ## The Problem
 
 **MCP** (Model Context Protocol) and **A2A** (Agent-to-Agent) are the two dominant agent protocols in 2026 — but they don't talk to each other.
@@ -244,14 +256,20 @@ pytest
 
 MIT — see [LICENSE](LICENSE).
 
-## Author
+## ⭐ Star History
 
-**Naveen Kumar Baskaran** — [GitHub](https://github.com/naveenkumarbaskaran) · [LinkedIn](https://www.linkedin.com/in/naveenkumarbaskaran/)
+If this bridge helped you connect MCP and A2A — **a star helps others find it.**
+
+[![Star History Chart](https://api.star-history.com/svg?repos=naveenkumarbaskaran/mcp-a2a-bridge&type=Date)](https://star-history.com/#naveenkumarbaskaran/mcp-a2a-bridge&Date)
 
 ---
 
 <div align="center">
 
 *The answer to "MCP vs A2A" is "both."*
+
+**Built by [Naveen Kumar Baskaran](https://linkedin.com/in/iamnaveenkumarb)** — Senior SAP Developer & AI/ML Engineer @ SAP Labs India | PhD Candidate
+
+[🌐 Portfolio](https://naveenkumarbaskaran.github.io/) · [💼 LinkedIn](https://linkedin.com/in/iamnaveenkumarb) · [🐦 Twitter](https://twitter.com/Naveenkbaskaran)
 
 </div>
